@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NearbyNeeds</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>
+      .search-bar {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .search-bar .form-control {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .search-bar .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .service-card {
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+      .service-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .service-card img {
+        width: 50%;
+        border-radius: 10px;
+      }
+      .service-card h5 {
+        margin-top: 10px;
+        padding: 10px 0;
+      }
+      .service-card p {
+        margin: 0;
+        padding: 10px 0;
+      }
+
+      /* header */
+      .hero-section {
+        background: #f0f0f0;
+        padding: 50px 0;
+      }
+
+      .navbar {
+        background-color: #ffffff; /* White background for navbar */
+        /*border-bottom: 2px solid #007bff;*/ /* Blue border at the bottom */
+      }
+
+      .navbar-brand img {
+        height: 45px; /* Adjusted logo size */
+      }
+
+      .navbar-nav {
+        margin-left: auto;
+      }
+
+      .navbar-nav li a:hover {
+        background-color: rgb(236, 176, 176);
+        border-radius: 5px;
+      }
+
+      .nav-item {
+        margin-right: 20px; /* Adds spacing between the nav items */
+      }
+
+      .nav-link {
+        color: #000; /* Default link color */
+      }
+
+      .nav-link:hover {
+        color: #000000 !important; /* Hover color for nav link */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER  -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-primary">
+      <div class="container">
+        <a class="navbar-brand text-white" href="#">
+          <img
+            src="https://i.ibb.co/mJccZTq/logo-prev-ui.png"
+            alt="NearbyNeeds Logo"
+          /><strong> NearbyNeeds </strong>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link active text-white bold-heading"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white bold-heading" href="login.html"
+                >Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-white bold-heading"
+                href="register-user.html"
+                >Register</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white bold-heading" href="#">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Search Bar -->
+      <div class="row justify-content-center search-bar">
+        <div class="col-12 col-md-8">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search for services..."
+            />
+            <button class="btn btn-outline-secondary" type="button">
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Cards -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="service-card">
+            <img src="https://via.placeholder.com/150" alt="Service Image" />
+            <h5 class="mt-2">Service Name</h5>
+            <p>Service Description</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card">
+            <img src="https://via.placeholder.com/150" alt="Service Image" />
+            <h5 class="mt-2">Service Name</h5>
+            <p>Service Description</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card">
+            <img src="https://via.placeholder.com/150" alt="Service Image" />
+            <h5 class="mt-2">Service Name</h5>
+            <p>Service Description</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card">
+            <img src="https://via.placeholder.com/150" alt="Service Image" />
+            <h5 class="mt-2">Service Name</h5>
+            <p>Service Description</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card">
+            <img src="https://via.placeholder.com/150" alt="Service Image" />
+            <h5 class="mt-2">Service Name</h5>
+            <p>Service Description</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card">
+            <img src="https://via.placeholder.com/150" alt="Service Image" />
+            <h5 class="mt-2">Service Name</h5>
+            <p>Service Description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5
+              class="text-uppercase mb-4 font-weight-bold text-primary bold-heading"
+            >
+              NearbyNeeds
+            </h5>
+            <p>
+              Connecting you with the best local service providers for all your
+              needs.
+            </p>
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h5
+              class="text-uppercase mb-4 font-weight-bold text-primary bold-heading"
+            >
+              Quick Links
+            </h5>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >Home</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >About Us</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >Services</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >Contact Us</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h5
+              class="text-uppercase mb-4 font-weight-bold text-primary bold-heading"
+            >
+              Follow Us
+            </h5>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >Facebook</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >Twitter</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >Instagram</a
+              >
+            </p>
+            <p>
+              <a href="#" class="text-white" style="text-decoration: none"
+                >LinkedIn</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5
+              class="text-uppercase mb-4 font-weight-bold text-primary bold-heading"
+            >
+              Contact
+            </h5>
+            <p>
+              <i class="fas fa-home mr-3"></i> 1234 Street Name, City, Country
+            </p>
+            <p><i class="fas fa-envelope mr-3"></i> info@nearbyneeds.com</p>
+            <p><i class="fas fa-phone mr-3"></i> + 123 456 7890</p>
+            <p><i class="fas fa-print mr-3"></i> + 123 456 7891</p>
+          </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <p>
+              © 2024 All rights reserved by:
+              <a href="#" style="text-decoration: none">
+                <strong class="text-primary">NearbyNeeds</strong>
+              </a>
+            </p>
+          </div>
+
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 23px"
+                    ><i class="fab fa-facebook"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 23px"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 23px"
+                    ><i class="fab fa-google-plus"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="#"
+                    class="btn-floating btn-sm text-white"
+                    style="font-size: 23px"
+                    ><i class="fab fa-linkedin"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <!-- Bootstrap JS -->
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

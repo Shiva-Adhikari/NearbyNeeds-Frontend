@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NearbyNeeds - Booking Confirmation</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #f0f0f5;
+        font-family: "Arial", sans-serif;
+      }
+
+      .booking-box {
+        /*background-color: white;*/
+        /*border-radius: 12px;*/
+        /*box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);*/
+        /*padding: 30px;*/
+        max-width: 600px;
+        margin: 50px auto;
+        text-align: center;
+        perspective: 1000px;
+      }
+
+      .booking-box.flipped .card-container {
+        transform: rotateY(180deg);
+      }
+
+      .card-container {
+        position: relative;
+        width: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.8s;
+      }
+
+      .card {
+        position: absolute;
+        width: 100%;
+        backface-visibility: hidden;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        background-color: white;
+        max-width: 600px;
+        text-align: center;
+        margin: 50px auto;
+        padding: 30px;
+        perspective: 1000px;
+      }
+
+      .card.front {
+        transform: rotateY(0deg);
+      }
+
+      .card.back {
+        transform: rotateY(180deg);
+        margin-top: 100px;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .btn-proceed {
+        /*background-color: #ff7f50;*/
+        /*color: white;*/
+        border-radius: 6px;
+      }
+
+      .btn-cancel {
+        /*background-color: #6c757d;*/
+        /*color: white;*/
+        border-radius: 6px;
+      }
+
+      .service-image {
+        border-radius: 50%;
+        background-color: #ab7f7f;
+        width: 100px;
+        height: 100px;
+        margin: 20px auto;
+      }
+
+      .back-button {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .back-button a {
+        text-decoration: none;
+        color: #333;
+        background-color: #e9ecef;
+        padding: 8px 16px;
+        border-radius: 6px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+      }
+
+      .back-button a:hover {
+        background-color: #d6d6d6;
+      }
+
+      /* Profile Image (Rounded) */
+      .profile-img {
+        width: 20%;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin: 0 auto 15px auto;
+      }
+
+      .profile-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .btn-back {
+        margin-top: 20px;
+      }
+
+      .booking-box {
+        perspective: 1000px;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 12px;
+        max-height: 2999px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Booking Confirmation Section -->
+    <div class="booking-box shadow">
+      <div class="container card-container">
+        <div class="card front shadow">
+          <h3 class="mb-4 fw-bold">Booking Confirmation</h3>
+          <div class="profile-img">
+            <!-- Placeholder for Provider's Image -->
+            <img src="https://via.placeholder.com/120" alt="Profile Image" />
+            <!-- Replace with your image -->
+          </div>
+
+          <div class="text-start mb-4">
+            <p><strong>Service Provider:</strong> QuickFix Cleaning Services</p>
+            <p><strong>Service Date:</strong> October 12, 2024</p>
+            <p><strong>Service Time:</strong> 11:00 AM</p>
+            <p><strong>Service:</strong> Complete Home Cleaning</p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <a href="#" class="btn btn-primary btn-lg btn-proceed"
+              >Proceed with Booking</a
+            >
+            <a
+              href="#user-profile.html"
+              class="btn btn-danger btn-lg btn-cancel"
+              >Cancel Booking</a
+            >
+          </div>
+
+          <!-- Back Button (Bottom) -->
+          <div class="back-button">
+            <a href="#javascript:history.back()" href="book-service.html">
+              &#8592; Back
+            </a>
+          </div>
+        </div>
+
+        <!-- Back Side (Booking Confirmed) -->
+        <div class="card back">
+          <div class="booking-confirmed">Booking Confirmed!</div>
+          <p class="text-center">
+            Your booking for <strong>QuickFix Cleaning Services</strong> has
+            been confirmed for <strong>October 12, 2024</strong> at
+            <strong>11:00 AM</strong>.
+          </p>
+          <p class="text-center">Thank you for choosing NearbyNeeds!</p>
+          <button class="btn btn-light btn-back mt-3">
+            &#8592; Back to Home
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Flip the card on "Proceed with Booking"
+      document
+        .querySelector(".btn-proceed")
+        .addEventListener("click", function () {
+          document.querySelector(".booking-box").classList.add("flipped");
+        });
+
+      // No need for back or cancel button to flip the card back
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
