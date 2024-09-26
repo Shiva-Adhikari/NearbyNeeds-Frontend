@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NearbyNeeds - Service Provider Dashboard</title>
 
+    <link rel="stylesheet" href="service-provider-profile.css">
     <!-- Bootstrap CSS -->
     <link href="bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link
@@ -20,218 +21,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
     />
-
-    <style>
-      body {
-        background-color: #f8f9fa;
-      }
-
-      .profile-card {
-        background-color: #fff;
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-        /* padding-bottom: 0px; */
-      }
-
-      .align-padding p {
-        margin: 0px;
-      }
-
-      .align-padding .pp {
-        padding-top: 5px;
-        margin-top: 5px;
-      }
-
-      .profile-img {
-        width: 120px;
-        height: 120px;
-        background-color: #b6c4d3;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 40px;
-        color: #fff;
-        font-weight: bold;
-      }
-
-      .service-card,
-      .review-card,
-      .availability-card {
-        background-color: #fff;
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-      }
-
-      .section-title {
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
-
-      .service-card-item,
-      .availability-item {
-        border-radius: 10px;
-        background-color: #f1f3f5;
-        padding: 15px;
-        /* margin-bottom: 10px; */
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .review-item {
-        padding: 15px;
-        border-radius: 10px;
-        background-color: #f1f3f5;
-        margin-bottom: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        display: flex;
-        align-items: center;
-      }
-
-      .review-profile {
-        width: 50px;
-        height: 50px;
-        background-color: #b6c4d3;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        color: #fff;
-        font-weight: bold;
-        margin-right: 15px;
-      }
-
-      .review-content {
-        flex-grow: 1;
-      }
-
-      /* .dashboard-btn {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: bold;
-    }
-
-    .dashboard-btn:hover {
-      background-color: #0056b3;
-      color: white;
-    } */
-
-      .star-rating {
-        color: #f1c40f;
-        font-size: 1.2rem;
-      }
-
-      /* Profile Image (Rounded) */
-      .profile-img {
-        /* width: 120px; */
-        /* height: 100px; */
-        width: 10%;
-        height: 10%;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .profile-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .container-custom {
-        /* max-width: 900px; /* Set max width for wider appearance */
-        /* margin-top: 50px; */
-        margin-top: 90px;
-        /* padding: 20px 0; */
-      }
-
-      /* Profile Image (Rounded) */
-      .profile-img-small {
-        /* width: 50px; */
-        /* height: 50px; */
-        width: 5%;
-        height: 5%;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin-right: 15px;
-      }
-
-      .profile-img-small img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* NAVBAR */
-      .hero-section {
-        background: #f0f0f0;
-        padding: 50px 0;
-      }
-
-      .navbar {
-        background-color: #ffffff; /* White background for navbar */
-        /*border-bottom: 2px solid #007bff;*/ /* Blue border at the bottom */
-      }
-
-      .navbar-brand img {
-        height: 45px; /* Adjusted logo size */
-      }
-
-      .navbar-nav {
-        margin-left: auto;
-      }
-
-      .navbar-nav li a:hover {
-        background-color: rgb(236, 176, 176);
-        border-radius: 5px;
-      }
-
-      .nav-item {
-        margin-right: 20px; /* Adds spacing between the nav items */
-      }
-
-      .nav-link {
-        color: #000; /* Default link color */
-      }
-
-      .nav-link:hover {
-        color: #000000 !important; /* Hover color for nav link */
-      }
-
-      .input-group {
-        max-width: 500px;
-        margin: 20px auto; /* Centers the input field */
-      }
-
-      h1 {
-        font-weight: bold;
-        color: #007bff; /* Blue color for the heading */
-      }
-
-      p.lead {
-        color: #007bff; /* Blue color for the paragraph */
-      }
-
-      @media (max-width: 768px) {
-        .navbar-brand {
-          margin: 0 auto;
-        }
-      }
-
-      .bold-heading {
-        font-weight: bold;
-      }
-    </style>
   </head>
   <body>
     <!-- HEADER  -->
@@ -255,7 +44,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse justify-content-end"
+          class="collapse navbar-collapse justify-content-end bold-head
           id="navbarNav"
         >
           <ul class="navbar-nav">
@@ -313,7 +102,7 @@
         </div>
 
         <a
-          class="btn btn-primary ms-auto"
+          class="btn btn-primary ms-auto fw-bold"
           href="service-provider-dashboard.html"
           >Update Profile</a
         >
@@ -559,6 +348,7 @@
       </div>
     </footer>
 
+    <script src="service-provider-profile.js"></script>
     <!-- Bootstrap JS -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
 

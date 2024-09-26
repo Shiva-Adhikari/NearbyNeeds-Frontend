@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NearbyNeeds - Service Completed</title>
 
+    <link rel="stylesheet" href="service-completed.css">
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -19,97 +20,6 @@
     <!-- Bootstrap 5 CDN -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- Custom CSS -->
-    <style>
-      body {
-        background-color: #f0f0f5;
-        font-family: "Arial", sans-serif;
-      }
-      .container-box {
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        max-width: 700px;
-        margin: 50px auto;
-      }
-      .header-text {
-        text-align: center;
-        color: #0d6efd;
-        font-weight: bold;
-      }
-      .sub-header-text {
-        text-align: center;
-        /* color: #666; */
-        margin-bottom: 20px;
-      }
-      .details-box {
-        /* border-radius: 8px; */
-        /* padding: 20px; */
-        /* margin-bottom: 20px; */
-        /* background: linear-gradient(135deg, #ffe1e1, #ffd1d1); */
-        background-color: #f0f0f5;
-        /* background-color: #f8f9fa; */
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-      .details-box p {
-        margin: 0;
-      }
-      .details-box p strong {
-        font-weight: bold;
-        color: #333;
-      }
-      .feedback-box {
-        /* background: linear-gradient(135deg, #f8f8f8, #e6e6e6); */
-        /* background: linear-gradient(135deg, #ffe1e1, #ffd1d1); */
-        background-color: #f0f0f5;
-        border-radius: 8px;
-        padding: 20px;
-        /* margin-bottom: 20px; */
-      }
-      .feedback-box textarea {
-        width: 100%;
-        padding: 10px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-      }
-      .action-buttons {
-        display: flex;
-        justify-content: space-between;
-      }
-      .btn-submit {
-        background-color: #0d6efd;
-        color: white;
-      }
-      .btn-cancel {
-        background-color: #6c757d;
-        color: white;
-      }
-
-      /* STAR RATING */
-      .bi-star-fill {
-        color: gold;
-      }
-      .bi-star-half {
-        color: gold;
-      }
-      .bi-star {
-        color: gray;
-      }
-      .star-rating i {
-        cursor: pointer;
-        font-size: 2rem;
-        position: relative;
-        margin-top: 0px;
-      }
-      .container-custom {
-        margin-top: -40px;
-      }
-    </style>
   </head>
   <body>
     <!-- Service Completion Section -->
@@ -159,64 +69,7 @@
       </div>
     </div>
 
-    <!-- STAR RATING -->
-    <script>
-      let rating = 3.5; // initial rating
-      const starRatingElement = document.getElementById("star-rating");
-      const ratingInput = document.getElementById("ratingInput");
-
-      function generateStars() {
-        const fullStars = Math.floor(rating);
-        const halfStars = rating - fullStars > 0 ? 1 : 0;
-        let starHTML = "";
-
-        // Generate star HTML for 5 stars
-        for (let i = 0; i < 5; i++) {
-          if (i < fullStars) {
-            starHTML += `<i class="bi bi-star-fill" data-index="${i + 1}"></i>`;
-          } else if (i === fullStars && halfStars === 1) {
-            starHTML += `<i class="bi bi-star-half" data-index="${i + 1}"></i>`;
-          } else {
-            starHTML += `<i class="bi bi-star" data-index="${i + 1}"></i>`;
-          }
-        }
-        starRatingElement.innerHTML = starHTML;
-      }
-
-      // Detect click and allow half-star ratings
-      starRatingElement.addEventListener("click", (event) => {
-        if (event.target.tagName === "I") {
-          const index = parseInt(event.target.dataset.index);
-          const starRect = event.target.getBoundingClientRect();
-          const clickPosition = event.clientX - starRect.left; // Mouse position relative to the star
-          const starWidth = starRect.width;
-
-          // Determine if the click is on the left (half-star) or right (full-star)
-          if (clickPosition < starWidth / 2) {
-            rating = index - 0.5; // half star
-          } else {
-            rating = index; // full star
-          }
-
-          // Update the hidden input field with the new rating
-          ratingInput.value = rating;
-
-          updateRating();
-        }
-      });
-
-      // Update the stars display based on the new rating
-      function updateRating() {
-        generateStars(); // Regenerate stars based on the updated rating
-      }
-
-      // Initial render of the stars
-      generateStars();
-
-      // Set the initial rating in the hidden input field
-      ratingInput.value = rating;
-    </script>
-
+    <script src="service-completed.js"></script>
     <!-- Bootstrap JS (Optional, for responsive navbars, modals, etc.) -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
 
@@ -226,30 +79,4 @@
   </body>
 </html>
 
-<!-- STAR PHP CODE -->
-<!-- <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the rating value from the form
-    $rating = $_POST['rating'];
 
-    // Sanitize and validate the rating value
-    $rating = filter_var($rating, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-
-    if ($rating && $rating >= 0 && $rating <= 5) {
-        // Store or process the rating value (e.g., save to a database)
-        // For example, using PDO to insert into a MySQL database
-        /*
-        $dsn = 'mysql:host=your_host;dbname=your_database';
-        $pdo = new PDO($dsn, 'username', 'password');
-        $sql = "INSERT INTO ratings (user_rating) VALUES (:rating)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':rating', $rating);
-        $stmt->execute();
-        */
-
-        echo "Rating saved: " . $rating;
-    } else {
-        echo "Invalid rating.";
-    }
-}
-?> -->

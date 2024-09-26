@@ -11,7 +11,7 @@
 }
 
 .navbar-brand img {
-  height: 45px; /* Adjusted logo size */
+  height: 40px; /* Adjusted logo size */
 }
 
 .navbar-nav {
@@ -67,26 +67,41 @@ body {
   height: 100vh;
 }
 
-.login-box {
+.register-box {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 700px;
+  margin-top: 485px; /* Adjust as needed */
 }
 
-.login-box h2 {
+.register-box h2 {
   text-align: center;
   margin-bottom: 30px;
   font-weight: bold;
+}
+
+.btn-radio {
+  border: none;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.btn-radio.active {
+  background-color: #007bff;
+  color: white;
 }
 
 .form-control {
   border-radius: 5px;
 }
 
-.btn-login {
+.btn-register {
   background-color: #007bff;
   border: none;
   padding: 10px;
@@ -96,7 +111,7 @@ body {
   font-weight: bold;
 }
 
-.btn-login:hover {
+.btn-register:hover {
   background-color: #0056b3;
 }
 
@@ -114,3 +129,15 @@ body {
 .link-text a:hover {
   text-decoration: underline;
 }
+
+/* NAVBAR HIDE */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: top 0.5s; /* add a smooth transition effect */
+}
+
+/* .navbar.hide { */
+/*top: -100px; /* hide the navbar by moving it up */
+/* } */

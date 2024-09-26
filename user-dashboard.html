@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Profile - NearbyNeeds</title>
 
+    <link rel="stylesheet" href="user-dashboard.css">
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -14,241 +15,6 @@
 
     <!-- Bootstrap 5.3 CDN -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-
-    <style>
-      body {
-        background-color: #f8f9fa;
-      }
-
-      /* Profile Card Styles */
-      .profile-card {
-        background-color: #fff;
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        /* margin-bottom: 30px; */
-      }
-
-      /* Profile Image (Rounded) */
-      .profile-img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .profile-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .profile-info {
-        flex-grow: 1;
-        padding-left: 20px;
-      }
-
-      .profile-info h4 {
-        margin-bottom: 10px;
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .profile-info input {
-        margin: 2px;
-        /* padding: 2px; */
-        /* color: #6c757d; */
-        font-size: 16px;
-      }
-
-      .btn-custom {
-        background-color: #6c757d;
-        color: white;
-        border-radius: 10px;
-        border: none;
-        padding: 10px 20px;
-      }
-
-      .btn-custom:hover {
-        background-color: #5a6268;
-      }
-
-      .btn-primary {
-        font-weight: bold;
-      }
-
-      .container-custom {
-        /* max-width: 900px; /* Set max width for wider appearance */
-        /* margin-top: 50px; */
-        margin-top: 90px;
-        /* padding: 20px 0; */
-      }
-
-      .ms-auto {
-        margin-left: auto;
-      }
-
-      /* Make sure the card is attractive and centered */
-      .profile-card {
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-      /* .profile-card:hover { */
-      /* transform: scale(1.02); */
-      /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); */
-      /* } */
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .profile-card {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .profile-info {
-          padding-left: 0;
-          margin-bottom: 20px;
-        }
-      }
-
-      /* Styling for profile box and service sections */
-      .profile-box {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        /* margin-bottom: 20px; */
-        background-color: #fff;
-        border-radius: 10px;
-      }
-      .service-box {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        padding: 20px;
-        background-color: #f8f9fa;
-        margin-bottom: 5px;
-        display: flex;
-        align-items: center;
-        margin-top: 5px;
-      }
-
-      .service-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-right: 5%;
-      }
-
-      .btn-update {
-        margin-top: auto;
-        /* remove this css */
-        /* margin-top: 1px; */
-      }
-      .service-details {
-        flex-grow: 1;
-      }
-
-      .service-details p {
-        padding: 2px;
-        margin: 0px;
-      }
-
-      @media (min-width: 768px) {
-        .service-box {
-          display: flex;
-          justify-content: space-between;
-        }
-      }
-
-      .button-center {
-        padding-left: 3rem;
-      }
-
-      .service-card,
-      .review-card,
-      .availability-card {
-        background-color: #fff;
-        border-radius: 15px;
-        padding: 15px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-      }
-
-      /* .service-box img {
-      border-radius: 10px;
-      background-color: #f1f3f5;
-      padding: 15px;
-      margin-bottom: 10px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    } */
-
-      /* NAVBAR */
-      .hero-section {
-        background: #f0f0f0;
-        padding: 50px 0;
-      }
-
-      .navbar {
-        background-color: #ffffff; /* White background for navbar */
-        /*border-bottom: 2px solid #007bff;*/ /* Blue border at the bottom */
-      }
-
-      .navbar-brand img {
-        height: 45px; /* Adjusted logo size */
-      }
-
-      .navbar-nav {
-        margin-left: auto;
-      }
-
-      .navbar-nav li a:hover {
-        background-color: rgb(236, 176, 176);
-        border-radius: 5px;
-      }
-
-      .nav-item {
-        margin-right: 20px; /* Adds spacing between the nav items */
-      }
-
-      .nav-link {
-        color: #000; /* Default link color */
-      }
-
-      .nav-link:hover {
-        color: #000000 !important; /* Hover color for nav link */
-      }
-
-      .input-group {
-        max-width: 500px;
-        margin: 20px auto; /* Centers the input field */
-      }
-
-      h1 {
-        font-weight: bold;
-        color: #007bff; /* Blue color for the heading */
-      }
-
-      p.lead {
-        color: #007bff; /* Blue color for the paragraph */
-      }
-
-      @media (max-width: 768px) {
-        .navbar-brand {
-          margin: 0 auto;
-        }
-      }
-
-      .bold-heading {
-        font-weight: bold;
-      }
-
-      /* input box */
-      
-    </style>
   </head>
   <body>
     <!-- HEADER  -->
@@ -272,7 +38,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div
-          class="collapse navbar-collapse justify-content-end"
+          class="collapse navbar-collapse justify-content-end bold-head"
           id="navbarNav"
         >
           <ul class="navbar-nav">
@@ -350,12 +116,12 @@
           </form>
 
           <!-- Update Profile Button -->
-          <button class="btn btn-custom mt-4">Update Profile</button>
+          <button class="btn btn-custom mt-4 btn-secondary fw-bold">Update Profile</button>
           <!-- Adjusted position of the update button -->
         </div>
         <!-- Provider Profile Button -->
         <div class="ms-auto">
-          <a class="btn btn-primary" href="user-profile.html">User Profile</a>
+          <a class="btn btn-primary fw-bold" href="user-profile.html">User Profile</a>
         </div>
       </div>
     </div>
@@ -594,7 +360,11 @@
           </div>
         </div>
         <div class="text-center">
-          <a class="btn btn-primary mt-3 btn-update btn-custom" href="service-completed.html">Update</a>
+          <a
+            class="btn btn-primary mt-3 btn-update btn-custom fw-bold
+            href="service-completed.html"
+            >Update</a
+          >
         </div>
       </div>
     </div>
@@ -603,7 +373,7 @@
     <footer class="bg-dark text-white pt-5 pb-4">
       <div class="container text-center text-md-left">
         <div class="row text-center text-md-left">
-          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 bold-head">
             <h5
               class="text-uppercase mb-4 font-weight-bold text-primary bold-heading"
             >
@@ -740,19 +510,8 @@
       </div>
     </footer>
 
-    <!-- Drop Down -->
-    <script>
-      document.querySelectorAll(".dropdown").forEach((dropdown) => {
-        dropdown.querySelectorAll(".dropdown-item").forEach((item) => {
-          item.addEventListener("click", function (event) {
-            event.preventDefault();
-            dropdown.querySelector(".dropdown-toggle").textContent =
-              this.textContent;
-          });
-        });
-      });
-    </script>
 
+<script src="user-dashboard.js"></script>
     <!-- Bootstrap 5.3 JS top-->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
