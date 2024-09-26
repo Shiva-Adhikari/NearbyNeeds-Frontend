@@ -37,14 +37,28 @@
         /* margin-top: 30px; */
       }
 
-      .align-padding p {
-        margin: 0px;
+      .profile-card input {
+        margin: 2px;
+        font-size: 16px;
       }
 
-      .align-padding .pp {
-        padding-top: 5px;
-        margin-top: 5px;
+      .align-padding {
+        margin: 0px;
+        width: 70%;
       }
+
+      /* .align-padding .pp { */
+        /* padding-top: 5px; */
+        /* margin-top: 5px; */
+      /* } */
+
+      .align-padding .width-len {
+        max-width: 220px;
+      }
+
+      /* .align-padding input .long { */
+        /* max-width: 2000px; */
+      /* } */
 
       /* .profile-img {
       width: 120px;
@@ -332,13 +346,47 @@
 
         <div class="ms-4 align-padding">
           <h3><strong>John Doe</strong></h3>
-          <p><strong>Email:</strong> johndoe@example.com</p>
-          <p><strong>Phone:</strong> 123-456-7890</p>
-          <p><strong>Address:</strong> 1234 Elm St, Springfield</p>
-          <p class="pp text-success">
+          <form action="#">
+          <label for="" class="fw-bold">Email: </label>
+            <input
+              class="width-len form-control d-inline-block"
+              type="text"
+              value="johndoe@example.com"
+              placeholder="email@example.com"
+            />
+            <br />
+
+          <label for="" class="fw-bold">Phone: </label>
+            <input
+              class="width-len form-control d-inline-block"
+              type="text"
+              value="9792589631"
+              placeholder="123-456-7890"
+            />
+            <br />
+
+          <label for="" class="fw-bold">Address: </label>
+            <input
+              class="width-len form-control d-inline-block"
+              type="text"
+              value="Bharatpur-20 Chitwan"
+              placeholder="Chitwan"
+            />
+            <br />
+            </form>
+
+            <input
+            class="mt-2 mb-1 w-100 form-control d-inline-block"
+            type="text"
+            value="Expert Electrician with 8+ years of experience in residential and commercial electrical systems."
+            placeholder="Description"
+          />
+          <br />
+
+          <!-- <p class="pp text-success">
             Expert Electrician with 8+ years of experience in residential and
             commercial electrical systems.
-          </p>
+          </p> -->
           <button class="btn update-btn">Update Dashboard</button>
         </div>
         <a class="btn btn-primary ms-auto" href="service-provider-profile.html"
@@ -350,52 +398,58 @@
     <!-- Services Offered Section -->
     <div class="container mt-4">
       <div class="service-card">
+        <form action="#">
         <h4 class="section-title">Services Offered</h4>
         <div class="row">
           <div class="col-md-4">
             <div class="service-card-item">
-              <h5 class="fw-bold">Pipe Installation</h5>
-              <p class="text-muted">
-                Professional pipe installation for residential and commercial
-                properties.
-              </p>
-              <button class="btn btn-primary mt-3">Update</button>
+              <h5 class="#"><input class="form-control text-center fw-bold" type="text" value="Pipe Installation" placeholder="Title"></h5>
+              <p class="text-muted"><textarea class="form-control text-center" type="text" placeholder="Description">Professional pipe installation for residential and commercial.</textarea></p>
+              <!-- <button class="btn btn-primary">Update</button> -->
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="service-card-item">
-              <h5 class="fw-bold">Drain Cleaning</h5>
-              <p class="text-muted">
-                Thorough drain cleaning to prevent blockages and maintain flow.
-              </p>
-              <button class="btn btn-primary mt-3">Update</button>
+              <!-- <h5 class="fw-bold">Drain Cleaning</h5> -->
+              <h5 class="fw-bold"><input class="form-control text-center fw-bold" type="text" value="Drain Cleaning" placeholder="Title"></h5>
+              <!-- <p class="text-muted"> -->
+                <!-- Thorough drain cleaning to prevent blockages and maintain flow. -->
+              <!-- </p> -->
+               <p class="text-muted"><textarea class="form-control text-center" type="text" placeholder="Description">Through drain cleaning to prevent blockages and maintain flow.</textarea></p>
+              <!-- <button class="btn btn-primary">Update</button> -->
             </div>
           </div>
         </div>
+      </form>
+      <button class="btn btn-primary btn-secondary mt-1">Create Offered</button>
       </div>
 
       <!-- Availability Schedule Section -->
       <div class="availability-card">
+        <!-- <h4 class="section-title">Availability Schedule</h4> -->
+        <form action="#">
         <h4 class="section-title">Availability Schedule</h4>
         <div class="row">
           <div class="col-md-6">
             <div class="availability-item">
-              Monday - Friday<br /><strong>8:00 AM - 6:00 PM</strong>
-              <br /><button class="btn btn-primary mt-3">Update</button>
+              <h5 class="#"><input class="form-control text-center fw-bold" type="text" value="Monday - Friday" placeholder="Title"></h5>
+              <p class="text-muted"><input class="form-control text-center" type="text" placeholder="Description" value="8:00 AM - 6:00 PM"></input></p>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="availability-item">
-              Saturday<br /><strong>9:00 AM - 1:00 PM</strong> <br /><button
-                class="btn btn-primary mt-3"
-              >
-                Update
-              </button>
+              <h5 class="#"><input class="form-control text-center fw-bold" type="text" value="Saturday" placeholder="Title"></h5>
+              <p class="text-muted"><input class="form-control text-center" type="text" placeholder="Description" value="9:00 AM - 1:00 PM"></input></p>
             </div>
           </div>
+          <div class="d-flex flex-wrap">
+            <button class="btn btn-primary mt-3 me-2 flex-fill">Create Availability</button>
+            <button class="btn btn-primary mt-3 flex-fill">Update</button>
+          </div>
         </div>
+      </form>
       </div>
 
       <!-- Customer Ratings & Reviews Section -->

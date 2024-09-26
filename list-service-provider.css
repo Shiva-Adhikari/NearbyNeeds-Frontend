@@ -1,0 +1,137 @@
+body {
+    background-color: #f8f9fa;
+  }
+
+  .service-box {
+    background-color: #f8f9fa;
+
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  /* .service-card:hover { */
+  /* transform: translateY(-10px); */
+  /* box-shadow: 0 8px 16px rgba(0,0,0,0.2); */
+  /* } */
+
+  .service-box img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  .service-box h5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+  }
+
+  .service-box p {
+    margin: 10px 0;
+    font-size: 0.9rem;
+  }
+
+  .rating-reviews {
+    margin-bottom: 15px;
+  }
+
+  .service-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f8f9fa;
+
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    /* a */
+  }
+
+  /* .book-now-btn {
+  background-color: #eff542;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.book-now-btn:hover {
+  background-color: #d4e02a;
+} */
+
+  /* NAVBAR */
+  .hero-section {
+    background: #f0f0f0;
+    margin-top: 70px;
+    padding: 20px 0;
+  }
+
+  .navbar {
+    background-color: #ffffff; /* White background for navbar */
+    /*border-bottom: 2px solid #007bff;*/ /* Blue border at the bottom */
+  }
+
+  .navbar-brand img {
+    height: 45px; /* Adjusted logo size */
+  }
+
+  .navbar-nav {
+    margin-left: auto;
+  }
+
+  .navbar-nav li a:hover {
+    background-color: rgb(236, 176, 176);
+    border-radius: 5px;
+  }
+
+  .nav-item {
+    margin-right: 20px; /* Adds spacing between the nav items */
+  }
+
+  .nav-link {
+    color: #000; /* Default link color */
+  }
+
+  .nav-link:hover {
+    color: #000000 !important; /* Hover color for nav link */
+  }
+
+  .input-group {
+    max-width: 500px;
+    margin: 20px auto; /* Centers the input field */
+  }
+
+  h1 {
+    font-weight: bold;
+    color: #007bff; /* Blue color for the heading */
+  }
+
+  p.lead {
+    color: #007bff; /* Blue color for the paragraph */
+  }
+
+  @media (max-width: 768px) {
+    .navbar-brand {
+      margin: 0 auto;
+    }
+  }
+
+  .bold-heading {
+    font-weight: bold;
+  }
+
+  /* SEARCH BOX  */
+  .input-group .dropdown-menu {
+    top: 100%;
+    left: 0;
+    margin-top: 0;
+    width: 60%;
+  }

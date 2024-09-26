@@ -1,0 +1,223 @@
+/* NAVBAR */
+.hero-section {
+  background: #f0f0f0;
+  margin-top: 70px;
+  padding: 20px 0;
+}
+
+.navbar {
+  background-color: #ffffff; /* White background for navbar */
+  /*border-bottom: 2px solid #007bff;*/ /* Blue border at the bottom */
+}
+
+.navbar-brand img {
+  height: 45px; /* Adjusted logo size */
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav li a:hover {
+  background-color: rgb(236, 176, 176);
+  border-radius: 5px;
+}
+
+.nav-item {
+  margin-right: 20px; /* Adds spacing between the nav items */
+}
+
+.nav-link {
+  color: #000; /* Default link color */
+}
+
+.nav-link:hover {
+  color: #000000 !important; /* Hover color for nav link */
+}
+
+.input-group {
+  max-width: 500px;
+  margin: 20px auto; /* Centers the input field */
+}
+
+h1 {
+  font-weight: bold;
+  color: #007bff; /* Blue color for the heading */
+}
+
+p.lead {
+  color: #007bff; /* Blue color for the paragraph */
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    margin: 0 auto;
+  }
+}
+
+.bold-heading {
+  font-weight: bold;
+}
+
+/* ////////////////////////////// */
+/* Popular Service Categories */
+.service-category {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+}
+
+.service-category img {
+  width: 400px;
+  height: 250px;
+  transition: transform 1s ease-in-out; /* Smooth transition for the image */
+}
+
+.service-category:hover img {
+  transform: scale(1.1);
+}
+
+.service-category h5 {
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  z-index: 2; /* Keeps the title above the overlay */
+}
+
+/* Softer overlay effect, tied to the service-category */
+.service-category .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(52, 58, 64, 0.7); /* Soft dark gray */
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.3);
+  transition: transform 0.6s ease, opacity 0.6s ease; /* Smoother overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Only hover inside the card box */
+.service-category:hover .overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.overlay span {
+  color: #fff;
+  /* font-size: 2em; */
+  /* font-weight: bold; */
+  text-align: center;
+}
+
+/* Hover scale and shadow effect */
+.service-category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 2px;
+  margin: 2px;
+}
+
+/* ////////////////////////////// */
+/* <!-- Our Service Providers --> */
+.provider-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* .provider-card:hover { */
+/* transform: scale(1.05); */
+/* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
+/* } */
+
+.provider-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #805252; /* Placeholder for avatar background */
+  margin: 0 auto 15px auto;
+}
+
+.provider-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.provider-service {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.bold-heading {
+  font-weight: bold;
+}
+
+/* ////////////////////////////// */
+/* <!-- Some Information About Our Users --> */
+.info-section {
+  padding: 40px 0;
+  background-color: #f9f9f9; /* Light background */
+}
+.info-item {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.info-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+.bold-heading {
+  font-weight: bold;
+}
+
+/* ////////////////////////////// */
+/* <!-- Our Service Providers --> */
+/* .provider-avatar { */
+/* width: 100px; */
+/* height: 100px; */
+/* border-radius: 50%; */
+/* background-color: #805252; Placeholder for avatar background */
+/* margin: 0 auto 15px auto; */
+/* } */
+
+.provider-service {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.bold-heading {
+  font-weight: bold;
+}
+
+/* Profile Image (Rounded) */
+.profile-img {
+  width: 30%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 auto 15px auto;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SEARCH BOX  */
+.input-group .dropdown-menu {
+  top: 100%;
+  left: 0;
+  margin-top: 0;
+  width: 60%;
+}
