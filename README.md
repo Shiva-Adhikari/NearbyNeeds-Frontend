@@ -1,1 +1,1 @@
-ma aba maile gare ko yei upload garxu
+ma aba maile gare ko yei upload garxu.
