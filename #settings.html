@@ -1,0 +1,218 @@
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NearbyNeeds - Account & Password</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Custom styles for layout */
+      body {
+        background-color: #f8f9fa; /* Light background color */
+        color: #333; /* Dark text color for contrast */
+        font-family: Arial, sans-serif;
+      }
+
+      .sidebar {
+        height: 100vh;
+        background-color: #f8f9fa; /* Light background color for sidebar */
+        padding: 20px;
+        border-right: 1px solid #ddd; /* Add a border to separate the sidebar */
+      }
+
+      .sidebar a {
+        color: #333; /* Dark text color for sidebar links */
+        text-decoration: none;
+        display: block;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .sidebar a:hover {
+        background-color: #e9ecef;
+      }
+
+      .sidebar a.active {
+        background-color: #1abc9c;
+        color: #fff;
+      }
+
+      .main-content {
+        padding: 40px;
+      }
+
+      .box-shadow {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff; /* Light background for content boxes */
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .section {
+        display: none;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      /* Responsive adjustment */
+      @media (max-width: 768px) {
+        .main-content {
+          padding: 20px;
+        }
+
+        .sidebar {
+          height: auto;
+          padding: 10px;
+        }
+      }
+
+      /* Styling buttons */
+      .btn-custom {
+        background-color: #1abc9c;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .btn-custom:hover {
+        background-color: #17a085;
+      }
+
+      .edit-link {
+        color: #e74c3c;
+        cursor: pointer;
+        text-decoration: underline;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 sidebar">
+          <h4 class="mb-4">Account</h4>
+          <a href="#" class="nav-link active" onclick="showSection('dashboard')"
+            >Dashboard</a
+          >
+          <a href="#" class="nav-link" onclick="showSection('upgrade')"
+            >Upgrade Plan</a
+          >
+          <a href="#" class="nav-link" onclick="showSection('recovery')"
+            >Recovery</a
+          >
+          <a href="#" class="nav-link" onclick="showSection('account-password')"
+            >Account and Password</a
+          >
+          <a href="#" class="nav-link" onclick="showSection('appearance')"
+            >Appearance</a
+          >
+          <a href="#" class="nav-link" onclick="showSection('security-privacy')"
+            >Security and Privacy</a
+          >
+          <a href="#" class="nav-link" onclick="showSection('import-switch')"
+            >Import via Easy Switch</a
+          >
+        </nav>
+
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10 main-content">
+          <section id="dashboard" class="box-shadow section active">
+            <h2>Dashboard</h2>
+            <!-- Dashboard content here -->
+          </section>
+
+          <section id="upgrade" class="box-shadow section">
+            <h2>Upgrade Plan</h2>
+            <!-- Upgrade Plan content here -->
+          </section>
+
+          <section id="recovery" class="box-shadow section">
+            <h2>Recovery</h2>
+            <!-- Recovery content here -->
+          </section>
+
+          <section id="account-password" class="box-shadow section">
+            <h2>Account and password</h2>
+            <!-- Account Details -->
+            <div class="row mt-4">
+              <div class="col-6">
+                <p><strong>Username</strong></p>
+              </div>
+              <div class="col-6">
+                <p>USERNAME</p>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-6">
+                <p><strong>Display name</strong></p>
+              </div>
+              <div class="col-6 d-flex">
+                <p>First Lastname</p>
+                <span class="edit-link">Edit</span>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-6">
+                <p><strong>Password</strong></p>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-custom">Change password</button>
+              </div>
+            </div>
+          </section>
+
+          <section id="appearance" class="box-shadow section">
+            <h2>Appearance</h2>
+            <!-- Appearance content here -->
+          </section>
+
+          <section id="security-privacy" class="box-shadow section">
+            <h2>Security and Privacy</h2>
+            <!-- Security and Privacy content here -->
+          </section>
+
+          <section id="import-switch" class="box-shadow section">
+            <h2>Import via Easy Switch</h2>
+            <!-- Import via Easy Switch content here -->
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => section.classList.remove("active"));
+
+        // Remove active class from all nav links
+        const navLinks = document.querySelectorAll(".sidebar .nav-link");
+        navLinks.forEach((link) => link.classList.remove("active"));
+
+        // Show the selected section
+        document.getElementById(sectionId).classList.add("active");
+
+        // Add active class to the clicked nav link
+        event.target.classList.add("active");
+      }
+    </script>
+  </body>
+</html>

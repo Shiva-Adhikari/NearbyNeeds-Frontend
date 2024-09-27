@@ -25,7 +25,7 @@ body {
     transition: transform 0.8s;
   }
 
-  .card {
+  .booking-box .card {
     position: absolute;
     width: 100%;
     backface-visibility: hidden;
@@ -34,12 +34,12 @@ body {
     background-color: white;
     max-width: 600px;
     text-align: center;
-    margin: 50px auto;
+    /* margin: 50px auto; */
     padding: 30px;
     perspective: 1000px;
   }
 
-  .card.front {
+  .booking-box .card.front {
     transform: rotateY(0deg);
   }
 
@@ -108,7 +108,7 @@ body {
     object-fit: cover;
   }
 
-  .card {
+  .card .booking-box{
     padding: 20px;
   }
 
@@ -122,4 +122,13 @@ body {
     max-width: 600px;
     border-radius: 12px;
     max-height: 2999px;
+  }
+
+  .text-start p {
+    /* padding: 0px; */
+    margin: 4px;
+  }
+
+  .booking-confirmed {
+    margin: 10px;
   }
