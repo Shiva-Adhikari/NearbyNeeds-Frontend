@@ -1,9 +1,2 @@
 code/
-#z_settings.html
-#z_search-services.css
-#search-services.html
-#search-services.js
-'#*.*'
-
-
-
+z_*
