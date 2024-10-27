@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Service Providers Account</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa; /* Light background for the entire page */
+      }
+      .container {
+        margin-top: 50px;
+      }
+      .table th,
+      .table td {
+        vertical-align: middle; /* Center align text in table cells */
+      }
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #e9ecef; /* Light gray for odd rows */
+      }
+      .table-striped tbody tr:nth-of-type(even) {
+        background-color: #ffffff; /* White for even rows */
+      }
+      .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for cards */
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+      .card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+      }
+      /* Scrollable table styles */
+      .scrollable-table {
+        max-height: 300px; /* Set the maximum height for the table */
+        overflow-y: auto; /* Enable vertical scrolling */
+        margin-top: 15px; /* Space between the card and the table */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Manage Service Providers</h2>
+
+      <!-- Button to trigger Add provider modal -->
+      <button
+        type="button"
+        class="btn btn-primary mb-4"
+        data-bs-toggle="modal"
+        data-bs-target="#addproviderModal"
+      >
+        Add Provider
+      </button>
+
+      <div class="tab-content" id="myTabContent">
+        <!-- providers Tab (Default Active) -->
+        <div
+          class="tab-pane fade show active"
+          id="providers"
+          role="tabpanel"
+          aria-labelledby="providers-tab"
+        >
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="scrollable-table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Provider ID</th>
+                      <th>Name</th>
+                      <th>Email Address</th>
+                      <th>Phone Number</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="providerTableBody">
+                    <tr>
+                      <td>001</td>
+                      <td>John Doe</td>
+                      <td>john@example.com</td>
+                      <td>9800000000</td>
+                      <td><span class="badge bg-success">Active</span></td>
+                      <td>
+                        <button
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editproviderModal"
+                          onclick="openEditModal('001', 'John Doe', 'john@example.com', '9800000000')"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          onclick="deleteprovider(this)"
+                        >
+                          Delete Provider
+                        </button>
+                        <button
+                          class="btn btn-warning"
+                          onclick="toggleBanprovider(this)"
+                        >
+                          Ban Provider
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>002</td>
+                      <td>Jane Smith</td>
+                      <td>jane@example.com</td>
+                      <td>9800000000</td>
+                      <td><span class="badge bg-danger">Banned</span></td>
+                      <td>
+                        <button
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editproviderModal"
+                          onclick="openEditModal('002', 'Jane Smith', 'jane@example.com', '9800000000')"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          onclick="deleteprovider(this)"
+                        >
+                          Delete Provider
+                        </button>
+                        <button
+                          class="btn btn-success"
+                          onclick="toggleBanprovider(this)"
+                        >
+                          Unban Provider
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- Add more providers if needed -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add provider Modal -->
+    <div
+      class="modal fade"
+      id="addproviderModal"
+      tabindex="-1"
+      aria-labelledby="addproviderModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addproviderModalLabel">Add Provider</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="addproviderForm" onsubmit="return validateAddproviderForm()">
+              <div class="mb-3">
+                <label for="newproviderName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="newproviderName"
+                  required
+                />
+                <div class="invalid-feedback">Please enter a full name</div>
+              </div>
+              <div class="mb-3">
+                <label for="newproviderEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="newproviderEmail"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="newproviderPhone" class="form-label"
+                  >Phone Number</label
+                >
+                <input type="text" class="form-control" id="newproviderPhone" required pattern="^\d{10}$">
+                <div class="invalid-feedback">Please enter a valid phone number (10 digits).</div>
+
+              </div>
+              <div class="mb-3">
+                <label for="newproviderStatus" class="form-label">Status</label>
+                <select class="form-select" id="newproviderStatus">
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" onclick="addprovider()">
+              Add provider
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit provider Modal -->
+    <div
+      class="modal fade"
+      id="editproviderModal"
+      tabindex="-1"
+      aria-labelledby="editproviderModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editproviderModalLabel">Edit provider Info</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="editproviderForm" onsubmit="return validateEditproviderForm()">
+              <div class="mb-3">
+                <label for="providerId" class="form-label">provider ID</label>
+                <input type="text" class="form-control" id="providerId" disabled />
+              </div>
+              <div class="mb-3">
+                <label for="providerName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="providerName"
+                  required
+                />
+                <div class="invalid-feedback">Please enter a full name</div>
+              </div>
+              <div class="mb-3">
+                <label for="providerEmail" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="providerEmail"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="providerPhone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="providerPhone" required pattern="^\d{10}$">
+                <div class="invalid-feedback">Please enter a valid phone number (10 digits).</div>
+
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="updateprovider()"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function openEditModal(providerId, providerName, providerEmail, providerPhone) {
+        document.getElementById("providerId").value = providerId;
+        document.getElementById("providerName").value = providerName;
+        document.getElementById("providerEmail").value = providerEmail;
+        document.getElementById("providerPhone").value = providerPhone;
+      }
+
+      function validateAddproviderForm() {
+        const name = document.getElementById("newproviderName");
+        if (name.value.trim() === "") {
+          name.classList.add("is-invalid");
+          return false;
+        } else {
+          name.classList.remove("is-invalid");
+        }
+
+        const email = document.getElementById("newproviderEmail");
+        const phone = document.getElementById("newproviderPhone");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^\d{10}$/;
+
+        if (!emailPattern.test(email.value)) {
+          email.classList.add("is-invalid");
+          return false;
+        } else {
+          email.classList.remove("is-invalid");
+        }
+
+        if (!phonePattern.test(phone.value)) {
+          phone.classList.add("is-invalid");
+          return false;
+        } else {
+          phone.classList.remove("is-invalid");
+        }
+
+        return true;
+      }
+
+
+      function validateEditproviderForm() {
+        const name = document.getElementById("providerName");
+        if (name.value.trim() === "") {
+          name.classList.add("is-invalid");
+          return false;
+        } else {
+          name.classList.remove("is-invalid");
+        }
+
+
+        const email = document.getElementById("providerEmail");
+        const phone = document.getElementById("providerPhone");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^\d{10}$/;
+
+        if (!emailPattern.test(email.value)) {
+          email.classList.add("is-invalid");
+          return false;
+        } else {
+          email.classList.remove("is-invalid");
+        }
+
+        if (!phonePattern.test(phone.value)) {
+          phone.classList.add("is-invalid");
+          return false;
+        } else {
+          phone.classList.remove("is-invalid");
+        }
+
+        return true;
+      }
+
+      function addprovider() {
+          if (!validateAddproviderForm()) {
+            return; // Stop the addition if validation fails
+          }
+      
+          const newproviderName = document.getElementById("newproviderName").value;
+          const newproviderEmail = document.getElementById("newproviderEmail").value;
+          const newproviderPhone = document.getElementById("newproviderPhone").value;
+          const newproviderStatus = document.getElementById("newproviderStatus").value;
+      
+          // Generate a new provider ID (simple increment for demo purposes)
+          const providerId = (document.querySelectorAll("#providerTableBody tr").length + 1)
+            .toString()
+            .padStart(3, "0");
+      
+          // Add new provider to the table
+          const providerTableBody = document.getElementById("providerTableBody");
+          const newRow = providerTableBody.insertRow();
+          newRow.innerHTML = `
+            <td>${providerId}</td>
+            <td>${newproviderName}</td>
+            <td>${newproviderEmail}</td>
+            <td>${newproviderPhone}</td>
+            <td><span class="badge bg-success">${newproviderStatus}</span></td>
+            <td>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editproviderModal" onclick="openEditModal('${providerId}', '${newproviderName}', '${newproviderEmail}', '${newproviderPhone}')">Edit</button>
+              <button class="btn btn-danger" onclick="deleteprovider(this)">Delete provider</button>
+              <button class="btn btn-warning" onclick="toggleBanprovider(this)">Ban provider</button>
+            </td>
+          `;
+        
+          // Close the modal
+          const modal = bootstrap.Modal.getInstance(document.getElementById("addproviderModal"));
+          modal.hide();
+        
+          // Reset the form after adding a provider
+          document.getElementById("addproviderForm").reset();
+    }
+
+
+      function updateprovider() {
+        if (!validateEditproviderForm()) {
+          return; // Stop the update if validation fails
+        }
+
+        const providerId = document.getElementById("providerId").value;
+        const providerName = document.getElementById("providerName").value;
+        const providerEmail = document.getElementById("providerEmail").value;
+        const providerPhone = document.getElementById("providerPhone").value;
+
+        // Update the corresponding row in the provider table
+        const rows = document.querySelectorAll("#providerTableBody tr");
+        rows.forEach((row) => {
+          if (row.cells[0].textContent === providerId) {
+            row.cells[1].textContent = providerName;
+            row.cells[2].textContent = providerEmail;
+            row.cells[3].textContent = providerPhone;
+          }
+        });
+
+        // Close the modal
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("editproviderModal")
+        );
+        modal.hide();
+      }
+
+      function deleteprovider(button) {
+        const row = button.closest("tr");
+        row.remove(); // Remove the provider row
+      }
+
+      function toggleBanprovider(button) {
+        const row = button.closest("tr");
+        const statusCell = row.cells[4];
+        const isBanned = statusCell.textContent.includes("Banned");
+
+        if (isBanned) {
+          statusCell.innerHTML = '<span class="badge bg-success">Active</span>';
+          button.classList.remove("btn-success");
+          button.classList.add("btn-warning");
+          button.textContent = "Ban Provider";
+        } else {
+          statusCell.innerHTML = '<span class="badge bg-danger">Banned</span>';
+          button.classList.remove("btn-warning");
+          button.classList.add("btn-success");
+          button.textContent = "Unban Provider";
+        }
+      }
+    </script>
+  </body>
+</html>

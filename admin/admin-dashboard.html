@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NearbyNeeds Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet"> <!-- Added Bootstrap Icons -->
+    <style>
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            font-size: 1.25rem;
+            background-color: #f8f9fa; /* Light background for header */
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .pending-status {
+            color: #ff9800; /* Orange for Pending */
+        }
+
+        .confirmed-status {
+            color: #4caf50; /* Green for Confirmed */
+        }
+
+        .completed-status {
+            color: #2196f3; /* Blue for Completed */
+        }
+
+        .canceled-status {
+            color: #f44336; /* Red for Canceled */
+        }
+
+        .card-body .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff7600; /* Brand-aligned color */
+        }
+
+        .booking-list li {
+            font-size: 0.9rem;
+        }
+
+        .manage-btn {
+            border-color: #ff7600;
+            color: #ff7600;
+        }
+
+        .manage-btn:hover {
+            background-color: #ff7600;
+            color: white;
+        }
+
+        /* Recent Bookings Styling */
+        .recent-booking-item {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+            /* text-align: left; */
+        }
+
+        .recent-booking-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .recent-booking-icon {
+            color: #ff7600;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row text-center">
+            <!-- Total Users Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Total Users</div>
+                    <div class="card-body">
+                        <p class="stat-number">1,500</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Providers Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Service Providers</div>
+                    <div class="card-body">
+                        <p class="stat-number">420</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Bookings Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Total Bookings</div>
+                    <div class="card-body">
+                        <p class="stat-number">5,250</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <!-- Booking Status Overview -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Booking Status Overview</div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item pending-status">Pending: 120</li>
+                            <li class="list-group-item confirmed-status">Confirmed: 340</li>
+                            <li class="list-group-item completed-status">Completed: 950</li>
+                            <li class="list-group-item canceled-status">Canceled: 30</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Recent Bookings -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Recent Bookings</div>
+                    <div class="card-body">
+                        <ul class="list-group booking-list">
+                            <li class="list-group-item recent-booking-item">
+                                <i class="bi bi-person recent-booking-icon"></i> <!-- User icon -->
+                                #1245 - John Doe with Plumbing
+                            </li>
+                            <li class="list-group-item recent-booking-item">
+                                <i class="bi bi-person recent-booking-icon"></i> <!-- User icon -->
+                                #1246 - Jane Smith with Cleaning
+                            </li>
+                            <li class="list-group-item recent-booking-item">
+                                <i class="bi bi-person recent-booking-icon"></i> <!-- User icon -->
+                                #1247 - Emily Brown with Wiring
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <!-- Top Service Providers -->
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header">All Service Providers</div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <!-- Provider A -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-star-fill" style="color: #ff7600;"></i> <!-- Star icon -->
+                                    <strong>Cleaning</strong>
+                                </div>
+                                <span class="text-muted">60 bookings</span>
+                            </li>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-success" role="progressbar" data-bookings="60" style="width: 0;"></div>
+                            </div>     
+                             <!-- data-bookings ma change garne, number change vayo vani progress bar change hunxa. taile total gar sabaiko ani yesma halde afai progress bar dekhauxa dynamically. -->
+        
+                            <!-- Provider B -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-star-fill" style="color: #ff7600;"></i> <!-- Star icon -->
+                                    <strong>Plumbling</strong>
+                                </div>
+                                <span class="text-muted">40 bookings</span>
+                            </li>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-info" role="progressbar" data-bookings="40" style="width: 0;"></div>
+                            </div>     
+                             <!-- data-bookings ma change garne, number change vayo vani progress bar change hunxa. taile total gar sabaiko ani yesma halde afai progress bar dekhauxa dynamically. -->
+        
+                            <!-- Provider C -->
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-star-fill" style="color: #ff7600;"></i> <!-- Star icon -->
+                                    <strong>Electrician</strong>
+                                </div>
+                                <span class="text-muted">20 bookings</span>
+                            </li>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-warning" role="progressbar" data-bookings="20" style="width: 0;"></div>     
+                                 <!-- data-bookings ma change garne, number change vayo vani progress bar change hunxa. taile total gar sabaiko ani yesma halde afai progress bar dekhauxa dynamically. -->
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <!-- Manage Users Button -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Manage Users</div>
+                    <div class="card-body">
+                        <a href="manage-users.html" class="btn manage-btn">Go to Users</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Providers Button -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Manage Providers</div>
+                    <div class="card-body">
+                        <a href="manage-serviceprovider.html" class="btn manage-btn">Go to Providers</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Bookings Button -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Manage Admins</div>
+                    <div class="card-body">
+                        <a href="manage-admin.html" class="btn manage-btn">Go to Admin</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">Manage Category</div>
+                    <div class="card-body">
+                        <a href="manage-category.html" class="btn manage-btn">Go to Category</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script>
+        // JavaScript for progress bars (to be adjusted dynamically)
+        document.addEventListener('DOMContentLoaded', function() {
+            var progressBars = document.querySelectorAll('.progress-bar');
+            var maxBookings = 60; // Example maximum value for bookings
+
+            progressBars.forEach(function(bar) {
+                var bookings = bar.getAttribute('data-bookings');
+                var percentage = (bookings / maxBookings) * 100;
+                bar.style.width = percentage + '%';
+            });
+        });
+    </script>
+
+</body>
+</html>

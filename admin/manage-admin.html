@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Admins Account</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa; /* Light background for the entire page */
+      }
+      .container {
+        margin-top: 50px;
+      }
+      .table th,
+      .table td {
+        vertical-align: middle; /* Center align text in table cells */
+      }
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #e9ecef; /* Light gray for odd rows */
+      }
+      .table-striped tbody tr:nth-of-type(even) {
+        background-color: #ffffff; /* White for even rows */
+      }
+      .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for cards */
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+      .card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+      }
+      /* Scrollable table styles */
+      .scrollable-table {
+        max-height: 300px; /* Set the maximum height for the table */
+        overflow-y: auto; /* Enable vertical scrolling */
+        margin-top: 15px; /* Space between the card and the table */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Manage Admins</h2>
+
+      <!-- Button to trigger Add admin modal -->
+      <button
+        type="button"
+        class="btn btn-primary mb-4"
+        data-bs-toggle="modal"
+        data-bs-target="#addadminModal"
+      >
+        Add Admin
+      </button>
+
+      <div class="tab-content" id="myTabContent">
+        <!-- admins Tab (Default Active) -->
+        <div
+          class="tab-pane fade show active"
+          id="admins"
+          role="tabpanel"
+          aria-labelledby="admins-tab"
+        >
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="scrollable-table">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Admin ID</th>
+                      <th>Name</th>
+                      <th>Email Address</th>
+                      <th>Phone Number</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminTableBody">
+                    <tr>
+                      <td>001</td>
+                      <td>John Doe</td>
+                      <td>john@example.com</td>
+                      <td>9800000000</td>
+                      <td><span class="badge bg-success">Active</span></td>
+                      <td>
+                        <button
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editadminModal"
+                          onclick="openEditModal('001', 'John Doe', 'john@example.com', '9800000000')"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          onclick="deleteadmin(this)"
+                        >
+                          Delete Admin
+                        </button>
+                        <button
+                          class="btn btn-warning"
+                          onclick="toggleBanadmin(this)"
+                        >
+                          Ban Admin
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>002</td>
+                      <td>Jane Smith</td>
+                      <td>jane@example.com</td>
+                      <td>9800000000</td>
+                      <td><span class="badge bg-danger">Banned</span></td>
+                      <td>
+                        <button
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editadminModal"
+                          onclick="openEditModal('002', 'Jane Smith', 'jane@example.com', '9800000000')"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          onclick="deleteadmin(this)"
+                        >
+                          Delete Admin
+                        </button>
+                        <button
+                          class="btn btn-success"
+                          onclick="toggleBanadmin(this)"
+                        >
+                          Unban Admin
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- Add more admins if needed -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add admin Modal -->
+    <div
+      class="modal fade"
+      id="addadminModal"
+      tabindex="-1"
+      aria-labelledby="addadminModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addadminModalLabel">Add Admin</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="addadminForm" onsubmit="return validateAddadminForm()">
+              <div class="mb-3">
+                <label for="newadminName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="newadminName"
+                  required
+                />
+                <div class="invalid-feedback">Please enter a full name</div>
+              </div>
+              <div class="mb-3">
+                <label for="newadminEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="newadminEmail"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="newadminPhone" class="form-label"
+                  >Phone Number</label
+                >
+                <input type="text" class="form-control" id="newadminPhone" required pattern="^\d{10}$">
+                <div class="invalid-feedback">Please enter a valid phone number (10 digits).</div>
+
+              </div>
+              <div class="mb-3">
+                <label for="newadminStatus" class="form-label">Status</label>
+                <select class="form-select" id="newadminStatus">
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" onclick="addadmin()">
+              Add Admin
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit admin Modal -->
+    <div
+      class="modal fade"
+      id="editadminModal"
+      tabindex="-1"
+      aria-labelledby="editadminModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editadminModalLabel">Edit Admin Info</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="editadminForm" onsubmit="return validateEditadminForm()">
+              <div class="mb-3">
+                <label for="adminId" class="form-label">Admin ID</label>
+                <input type="text" class="form-control" id="adminId" disabled />
+              </div>
+              <div class="mb-3">
+                <label for="adminName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="adminName"
+                  required
+                />
+                <div class="invalid-feedback">Please enter a full name</div>
+              </div>
+              <div class="mb-3">
+                <label for="adminEmail" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="adminEmail"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="adminPhone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="adminPhone" required pattern="^\d{10}$">
+                <div class="invalid-feedback">Please enter a valid phone number (10 digits).</div>
+
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="updateadmin()"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function openEditModal(adminId, adminName, adminEmail, adminPhone) {
+        document.getElementById("adminId").value = adminId;
+        document.getElementById("adminName").value = adminName;
+        document.getElementById("adminEmail").value = adminEmail;
+        document.getElementById("adminPhone").value = adminPhone;
+      }
+
+      function validateAddadminForm() {
+        const name = document.getElementById("newadminName");
+        if (name.value.trim() === "") {
+          name.classList.add("is-invalid");
+          return false;
+        } else {
+          name.classList.remove("is-invalid");
+        }
+
+        const email = document.getElementById("newadminEmail");
+        const phone = document.getElementById("newadminPhone");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^\d{10}$/;
+
+        if (!emailPattern.test(email.value)) {
+          email.classList.add("is-invalid");
+          return false;
+        } else {
+          email.classList.remove("is-invalid");
+        }
+
+        if (!phonePattern.test(phone.value)) {
+          phone.classList.add("is-invalid");
+          return false;
+        } else {
+          phone.classList.remove("is-invalid");
+        }
+
+        return true;
+      }
+
+
+      function validateEditadminForm() {
+        const name = document.getElementById("adminName");
+        if (name.value.trim() === "") {
+          name.classList.add("is-invalid");
+          return false;
+        } else {
+          name.classList.remove("is-invalid");
+        }
+
+
+        const email = document.getElementById("adminEmail");
+        const phone = document.getElementById("adminPhone");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^\d{10}$/;
+
+        if (!emailPattern.test(email.value)) {
+          email.classList.add("is-invalid");
+          return false;
+        } else {
+          email.classList.remove("is-invalid");
+        }
+
+        if (!phonePattern.test(phone.value)) {
+          phone.classList.add("is-invalid");
+          return false;
+        } else {
+          phone.classList.remove("is-invalid");
+        }
+
+        return true;
+      }
+
+      function addadmin() {
+          if (!validateAddadminForm()) {
+            return; // Stop the addition if validation fails
+          }
+      
+          const newadminName = document.getElementById("newadminName").value;
+          const newadminEmail = document.getElementById("newadminEmail").value;
+          const newadminPhone = document.getElementById("newadminPhone").value;
+          const newadminStatus = document.getElementById("newadminStatus").value;
+      
+          // Generate a new admin ID (simple increment for demo purposes)
+          const adminId = (document.querySelectorAll("#adminTableBody tr").length + 1)
+            .toString()
+            .padStart(3, "0");
+      
+          // Add new admin to the table
+          const adminTableBody = document.getElementById("adminTableBody");
+          const newRow = adminTableBody.insertRow();
+          newRow.innerHTML = `
+            <td>${adminId}</td>
+            <td>${newadminName}</td>
+            <td>${newadminEmail}</td>
+            <td>${newadminPhone}</td>
+            <td><span class="badge bg-success">${newadminStatus}</span></td>
+            <td>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editadminModal" onclick="openEditModal('${adminId}', '${newadminName}', '${newadminEmail}', '${newadminPhone}')">Edit</button>
+              <button class="btn btn-danger" onclick="deleteadmin(this)">Delete admin</button>
+              <button class="btn btn-warning" onclick="toggleBanadmin(this)">Ban admin</button>
+            </td>
+          `;
+        
+          // Close the modal
+          const modal = bootstrap.Modal.getInstance(document.getElementById("addadminModal"));
+          modal.hide();
+        
+          // Reset the form after adding a admin
+          document.getElementById("addadminForm").reset();
+    }
+
+
+      function updateadmin() {
+        if (!validateEditadminForm()) {
+          return; // Stop the update if validation fails
+        }
+
+        const adminId = document.getElementById("adminId").value;
+        const adminName = document.getElementById("adminName").value;
+        const adminEmail = document.getElementById("adminEmail").value;
+        const adminPhone = document.getElementById("adminPhone").value;
+
+        // Update the corresponding row in the admin table
+        const rows = document.querySelectorAll("#adminTableBody tr");
+        rows.forEach((row) => {
+          if (row.cells[0].textContent === adminId) {
+            row.cells[1].textContent = adminName;
+            row.cells[2].textContent = adminEmail;
+            row.cells[3].textContent = adminPhone;
+          }
+        });
+
+        // Close the modal
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("editadminModal")
+        );
+        modal.hide();
+      }
+
+      function deleteadmin(button) {
+        const row = button.closest("tr");
+        row.remove(); // Remove the admin row
+      }
+
+      function toggleBanadmin(button) {
+        const row = button.closest("tr");
+        const statusCell = row.cells[4];
+        const isBanned = statusCell.textContent.includes("Banned");
+
+        if (isBanned) {
+          statusCell.innerHTML = '<span class="badge bg-success">Active</span>';
+          button.classList.remove("btn-success");
+          button.classList.add("btn-warning");
+          button.textContent = "Ban Admin";
+        } else {
+          statusCell.innerHTML = '<span class="badge bg-danger">Banned</span>';
+          button.classList.remove("btn-warning");
+          button.classList.add("btn-success");
+          button.textContent = "Unban Admin";
+        }
+      }
+    </script>
+  </body>
+</html>
